@@ -1,17 +1,20 @@
-from pydantic import BaseSettings
+from pydantic import BaseModel
 import yaml
 from pathlib import Path
 from typing import Dict, Any
 
-class Config(BaseSettings):
+class Config(BaseModel):
     embedding_provider: str = "huggingface"
     model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
     vector_store_provider: str = "chroma"
     chunk_size: int = 1000
     chunk_overlap: int = 200
-    retrieval_strategy: str = "cosine"
+    chunking_strategy: str = "recursive"
     top_k: int = 5
     reranker_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    persist_directory: str = "./data/vector_store"
+    collection_name: str = "default_collection"
+    retrieval_strategy: str = "advanced"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

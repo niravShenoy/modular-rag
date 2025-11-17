@@ -20,6 +20,7 @@ dependencies = [
     "langchain-openai>=0.3.35",
     "pymupdf>=1.26.6",
     "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.20",
     "sentence-transformers>=5.1.2",
     "tqdm",
 ]

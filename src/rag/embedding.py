@@ -4,7 +4,7 @@ import numpy as np
 from typing import List
 from langchain_openai import OpenAIEmbeddings
 
-from core.config import Config
+from src.core.config import Config
 
 class EmbeddingService:
     def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
@@ -37,7 +37,6 @@ class EmbeddingService:
         Embed a list of documents.
         """
         try:
-            texts = [chunk.page_content for chunk in chunks]
-            return self.model.encode(texts)
+            return self.model.encode(chunks)
         except Exception as e:
             raise ValueError(f"Error embedding documents: {e}")
