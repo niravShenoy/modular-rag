@@ -1,4 +1,4 @@
-# Agentic RAG
+# Modular RAG
 
 A powerful and configurable Retrieval-Augmented Generation (RAG) application designed for multi-domain use cases. This project combines a robust Python backend with a modern Next.js frontend to provide a seamless experience for document ingestion and intelligent chat interactions.
 
