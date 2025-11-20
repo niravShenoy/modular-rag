@@ -1,4 +1,5 @@
 import logging
+import uvicorn
 from fastapi import FastAPI
 from dotenv import load_dotenv
 from contextlib import asynccontextmanager
@@ -24,7 +25,7 @@ async def lifespan(app):
         yield
     finally:
         if hasattr(app.state, 'vector_store') and hasattr(app.state.vector_store, 'save'):
-            app.state.vector_store.save()  # e.g., for FAISS/Chroma
+            app.state.vector_store.save()
 
 app = FastAPI(title="RAG API", version="1.0.0", lifespan=lifespan)
 
@@ -39,6 +40,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
     uvicorn.run(app, host="0.0.0.0", port=8000)
